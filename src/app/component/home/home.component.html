@@ -1,0 +1,35 @@
+<form  class="mx-auto" [formGroup]="formUser">
+    <div class="text-center">
+    <div class="mb-3">
+      <label class="form-label">User Id</label>
+      <input type="text" class="form-control" formControlName="idUser"
+      [maxLength]="100" >
+    </div>
+    <button type="submit"class="btn btn-primary" (click)="search()">Search</button>
+</div>
+</form>
+
+<div>
+    <table class="table" *ngIf="this.Error===1">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>name</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>Salary Annual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of listUsr">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.salary }}</td>
+            <td>{{ user.salary_annual }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p *ngIf="this.Error===2" class="text-center">The original service to bring the user in did not work, Sorry</p>
+</div>
